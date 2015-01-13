@@ -1,8 +1,9 @@
+# Main class
 class rabbitmq (
   $selinux          = true,
   $rabbitmq_package = $::rabbitmq::params::rabbitmq_package,
   $rabbitmq_service = $::rabbitmq::params::rabbitmq_service,
-) inherits ::rabbitmq::params {
+) inherits ::rabbitmq::params { # lint:ignore:class_inherits_from_params_class
 
   package { $rabbitmq_package: ensure => 'installed' }
 
@@ -17,6 +18,7 @@ class rabbitmq (
   $node_selinux = str2bool($::selinux)
   if $selinux == true and $node_selinux == true {
     # This requires the optional 'thias-selinux' for semanage presence
+    # lint:ignore:80chars lint:ignore:double_quoted_strings More readable
     include '::selinux'
     # Management port
     exec { 'semanage port -a -t amqp_port_t -p tcp 15672':
@@ -32,6 +34,7 @@ class rabbitmq (
       require => Package[$::selinux::package_audit2allow],
       before  => Service[$rabbitmq_service],
     }
+    # lint:endignore
   }
 
 }

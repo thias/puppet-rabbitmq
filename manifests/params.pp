@@ -1,3 +1,4 @@
+# Parameters class
 class rabbitmq::params {
 
   $rabbitmq_package = 'rabbitmq-server'

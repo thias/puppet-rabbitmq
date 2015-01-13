@@ -20,5 +20,5 @@ include '::rabbitmq'
 
 Once the RabbitMQ server is up and running, it initially needs to be manually
 configured. This is where other modules might go beyond this basic one. See
-rabbitmqctl(1) for more information.
+`rabbitmqctl(1)` for more information.
 
