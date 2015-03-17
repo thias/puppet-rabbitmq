@@ -27,7 +27,7 @@ as-is using `source` or `content` type parameters, with your own files or
 templates (here we use an included example cluster template ) :
 
 ```puppet
-$cluster_nodes = [ 'rabbit@node1', 'rabbit@node2' ]
+$cluster_nodes = [ 'rabbit@node1.example.lan', 'rabbit@node2.example.lan' ]
 class { '::rabbitmq':
   rabbitmq_config_content => template('rabbitmq/rabbitmq.config-cluster.erb'),
   rabbitmq_env            => {
